@@ -1,3 +1,18 @@
+# [Curso de Arduino Avanzado](http://www.cepubeda.es/cepubeda/?mod=noticia&id=41) (162320GE028)
+
+### Curso del CEP de Úbeda
+
+### Nivel avanzado
+
+#### 14, 21, 27 abril y  4, 10, 23 de Mayo de 2016
+
+#####  IES ANDRÉS DE VANDELVIRA (Baeza)
+
+![CC](https://licensebuttons.net/l/by-sa/3.0/88x31.png)
+
+## José Antonio Vacas  @javacasm
+
+
 ## Trabajando con librerías
 
 Arduino guarda las librerías en 2 lugares:
