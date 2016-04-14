@@ -4,12 +4,14 @@
 
 ### Nivel avanzado
 
-#### 14, 21, 27 abril y  4,10, 23 de Mayo de 2016
+#### 14, 21, 27 abril y  4, 10, 23 de Mayo de 2016
 
 #####  IES ANDRÉS DE VANDELVIRA (Baeza)
 
 ![CC](https://licensebuttons.net/l/by-sa/3.0/88x31.png)
+
 ## José Antonio Vacas  @javacasm
+
 
 * * *
 
