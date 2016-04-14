@@ -1,3 +1,18 @@
+# [Curso de Arduino Avanzado](http://www.cepubeda.es/cepubeda/?mod=noticia&id=41) (162320GE028)
+
+### Curso del CEP de Úbeda
+
+### Nivel avanzado
+
+#### 14, 21, 27 abril y  4, 10, 23 de Mayo de 2016
+
+#####  IES ANDRÉS DE VANDELVIRA (Baeza)
+
+![CC](https://licensebuttons.net/l/by-sa/3.0/88x31.png)
+
+## José Antonio Vacas  @javacasm
+
+
 # Invernadero digital
 
 ![invernadero](https://pbs.twimg.com/profile_images/2105495865/IMG_1567_400x400.JPG)
@@ -17,7 +32,7 @@ En este proyecto controlaremos 2 actuadores:
 * Sensor de temperatura y humedad [producto](http://www.seeedstudio.com/wiki/Grove_-_Temperature_and_Humidity_Sensor_Pro)
 ![sensor](http://www.seeedstudio.com/wiki/images/thumb/d/d1/Temp_humi_pro.jpg/400px-Temp_humi_pro.jpg)
 
-* [Control de motores](./MotorDC.md) 
+* [Control de motores](./MotorDC.md)
 
 ## Modelo
 
