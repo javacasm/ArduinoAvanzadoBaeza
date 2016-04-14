@@ -1,10 +1,25 @@
+# [Curso de Arduino Avanzado](http://www.cepubeda.es/cepubeda/?mod=noticia&id=41) (162320GE028)
+
+### Curso del CEP de Úbeda
+
+### Nivel avanzado
+
+#### 14, 21, 27 abril y  4, 10, 23 de Mayo de 2016
+
+#####  IES ANDRÉS DE VANDELVIRA (Baeza)
+
+![CC](https://licensebuttons.net/l/by-sa/3.0/88x31.png)
+
+## José Antonio Vacas  @javacasm
+
+
 # Globo sonda/Estación meteorológica
 
 ![globo](http://arielwaldman.com/wp-content/2010/03/6331-239861690014-774155014-8379928-4367982-n.jpg)
 
 ### Descripción
 
-Globo sonda/estación meteorológica: Se medirán y registrarán variables meteorológicas: temperatura, humedad ambiental y presión atmósférica junto a la posición por medio d un gps y el movimiento con un acelerómetro  lo que nos permite saber el movimiento que realiza en su vuelo. Los datos se guardan en una tarjeta SD de formato micro que puede ser leída desde un ordenador donde se podrán analizar con posterioridad. 
+Globo sonda/estación meteorológica: Se medirán y registrarán variables meteorológicas: temperatura, humedad ambiental y presión atmósférica junto a la posición por medio d un gps y el movimiento con un acelerómetro  lo que nos permite saber el movimiento que realiza en su vuelo. Los datos se guardan en una tarjeta SD de formato micro que puede ser leída desde un ordenador donde se podrán analizar con posterioridad.
 
 El implementar el globo sonda tiene algunas complejidades añadidas:
 
@@ -15,7 +30,7 @@ Una posibilidad es utilizarlo en una cometa. Habría que protegerlo ante caidas 
 
 ## Objetivos
 
-* Leer los distintos sensores y el GPS. 
+* Leer los distintos sensores y el GPS.
 * Los datos siempre que sea posible se guardarán en la tarjeta.
 
 ## Ejemplos de proyectos
@@ -35,8 +50,8 @@ Una posibilidad es utilizarlo en una cometa. Habría que protegerlo ante caidas 
 
 ## Componentes
 
-* GPS [Página del producto](https://www.sparkfun.com/products/11058) [detalles](https://github.com/sparkfun/Venus_GPS_SMA_Connector/tree/V_2.1 )[GPS](http://www.electan.com/product_thumb.php?img=images/09133-01.jpg&w=320&h=240) 
-* Barómetro [página del producto](http://www.seeedstudio.com/wiki/Grove_-_Barometer_Sensor) 
+* GPS [Página del producto](https://www.sparkfun.com/products/11058) [detalles](https://github.com/sparkfun/Venus_GPS_SMA_Connector/tree/V_2.1 )[GPS](http://www.electan.com/product_thumb.php?img=images/09133-01.jpg&w=320&h=240)
+* Barómetro [página del producto](http://www.seeedstudio.com/wiki/Grove_-_Barometer_Sensor)
 ![barómetro](http://www.seeedstudio.com/wiki/images/thumb/e/e7/Grove-Barometer.jpg/300px-Grove-Barometer.jpg) ([librería](http://www.seeedstudio.com/wiki/images/e/e8/Barometer_Sensor.zip)
 * Sensor de temperatura y humedad [producto](http://www.seeedstudio.com/wiki/Grove_-_Temperature_and_Humidity_Sensor_Pro)
 ![sensor](http://www.seeedstudio.com/wiki/images/thumb/d/d1/Temp_humi_pro.jpg/400px-Temp_humi_pro.jpg)
@@ -63,8 +78,7 @@ Una posibilidad es utilizarlo en una cometa. Habría que protegerlo ante caidas 
 ## Librerías
 
 * SD
-* [DHT22](https://github.com/Seeed-Studio/Grove_Temperature_And_Humidity_Sensor) 
+* [DHT22](https://github.com/Seeed-Studio/Grove_Temperature_And_Humidity_Sensor)
 * Sensor de presión
 * GPS
 * [Acelerómetro](https://github.com/sparkfun/ADXL335_Breakout)
-
