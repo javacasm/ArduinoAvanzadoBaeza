@@ -55,6 +55,8 @@ Podemos estructurar en los siguientes apartados
 
 4. [Proyectos](./proyectos/proyectos.md)
 
+[Dónde comprar](./Comprar.md)
+
 En este módulo se desarrollaran 3 proyectos diferentes que tendrán en común el usar una placa Arduino como controlador. Se parte de un diseño genérico que los alumnos han de implementar.
 
 Ejemplos de proyectos
