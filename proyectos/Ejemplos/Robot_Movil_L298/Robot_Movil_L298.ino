@@ -6,6 +6,7 @@ int motor2_atras=10;    //  In4
 int motor1_velocidad=11;//  EnA
 int motor2_velocidad=12;//  EnB
 
+int sensorIRSuelo=6;
 
 void adelante()
 {
@@ -30,6 +31,14 @@ void atras()
   digitalWrite(motor2_atras,HIGH);
 }
 
+int dv=0; // Los motores se mueven a la misma velocidad
+void velocidad(int v)
+{
+  // Si apreciamos que el robot avanza curvado podemos calibrarlos con 
+  // valores pequeños positivos o negativos de dv
+  analogWrite(motor1_velocidad,v+dv);
+  analogWrite(motor2_velocidad,v);
+}
 
 void setup() {
   // Fundamental!!! ACTIVAR LAS PATILLAS COMO SALIDAS
@@ -40,6 +49,16 @@ void setup() {
  
 }
 
+int haySuelo()
+{
+  int resultado=0;
+  if(digitalRead(SensorSuelo)==HIGH) // Detectamos el suelo
+  {  resultado=1; }
+  else
+  {  resultado=0;}
+  
+  return resultado;
+}
 void loop() {
   // put your main code here, to run repeatedly:
 
