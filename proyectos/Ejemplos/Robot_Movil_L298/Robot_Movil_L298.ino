@@ -1,9 +1,13 @@
+#include <Arduino.h>
 
+
+// TODO: revisar los pines EN tiene PWM
+
+int motor1_velocidad=11;//  EnA
 int motor1_adelante=7;  //  In1
 int motor1_atras=8;     //  In2
 int motor2_adelante=9;  //  In3
 int motor2_atras=10;    //  In4
-int motor1_velocidad=11;//  EnA
 int motor2_velocidad=12;//  EnB
 
 int sensorIRSuelo=6;
