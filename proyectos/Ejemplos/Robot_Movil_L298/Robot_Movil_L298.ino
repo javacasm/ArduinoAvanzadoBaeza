@@ -92,8 +92,14 @@ int haySuelo()
 
 int mideDistancia()
 {
-  // Mejor usar la librería newPing
-  
+  // Mejor usar la librería newPing https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home
+  digitalWrite(sensorUSTrigger,HIGH);  // Lanzamos el ultrasonido
+  delayMicroseconds(10);                // esperamos 200 microsegundos
+  digitalWrite(sensorUSTrigger,LOW);   // paramos el ultrasonido
+  delayMicroseconds(10);
+  long tiempoRebote=pulseIn(sensorUSEcho,HIGH);  // Medimos el tiempo hasta que se detecte el rebote
+  long cm=(tiempoRebote*34000)/1000;
+  return cm;
 }
 
 void loop() {
