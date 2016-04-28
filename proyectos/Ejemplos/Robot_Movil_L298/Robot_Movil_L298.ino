@@ -63,7 +63,7 @@ void parar()
 int dv=0; // Los motores se mueven a la misma velocidad
 void velocidad(int v)
 {
-  // Si apreciamos que el robot avanza curvado podemos calibrarlos con 
+  // Si apreciamos que el robot avanza curvado podemos calibrarlos con
   // valores pequeños positivos o negativos de dv
   analogWrite(motor1_velocidad,v+dv);
   analogWrite(motor2_velocidad,v);
@@ -80,7 +80,7 @@ void setup() {
   pinMode(sensorIRSuelo,INPUT);
   pinMode(sensorUSTrigger,INPUT);
   pinMode(sensorUSEcho,INPUT);
- 
+
 }
 
 int haySuelo()
@@ -90,19 +90,21 @@ int haySuelo()
   {  resultado=1; }
   else
   {  resultado=0;}
-  
+
   return resultado;
 }
 
 int mideDistancia()
 {
   // Mejor usar la librería newPing https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home
+  digitalWrite(sensorUSTrigger,LOW);   // paramos el ultrasonido
+  delayMicroseconds(5);
   digitalWrite(sensorUSTrigger,HIGH);  // Lanzamos el ultrasonido
   delayMicroseconds(10);                // esperamos 200 microsegundos
   digitalWrite(sensorUSTrigger,LOW);   // paramos el ultrasonido
-  delayMicroseconds(10);
+
   long tiempoRebote=pulseIn(sensorUSEcho,HIGH);  // Medimos el tiempo hasta que se detecte el rebote
-  long cm=(tiempoRebote*34000)/1000;
+  long cm=((tiempoRebote/2)*340)/1000000.0; // Dividimos por 2 (es ida y vuelta) 
   return cm;
 }
 
@@ -119,7 +121,7 @@ void loop() {
         derecha();
         delay(300);
       }
-    
+
   }
   else  // Si no hay suelo paramos y volvemos hacia atrás
   {
