@@ -83,6 +83,8 @@ void setup() {
 
 }
 
+// Usa un sensor Infrarrojo para ver si hay o no suelo
+// Debe estar en la parte delantera del robot
 int haySuelo()
 {
   int resultado=0;
@@ -93,9 +95,10 @@ int haySuelo()
 
   return resultado;
 }
-
+// Mide la distancia usando el sensor de Ultrasonidos HC-SR04 o similar
 int mideDistancia()
 {
+  // Basado en http://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/
   // Mejor usar la librería newPing https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home
   digitalWrite(sensorUSTrigger,LOW);   // paramos el ultrasonido
   delayMicroseconds(5);
@@ -104,7 +107,7 @@ int mideDistancia()
   digitalWrite(sensorUSTrigger,LOW);   // paramos el ultrasonido
 
   long tiempoRebote=pulseIn(sensorUSEcho,HIGH);  // Medimos el tiempo hasta que se detecte el rebote
-  long cm=((tiempoRebote/2)*340)/1000000.0; // Dividimos por 2 (es ida y vuelta) 
+  long cm=((tiempoRebote/2)*340)/1000000.0; // Dividimos por 2 (es ida y vuelta)
   return cm;
 }
 
