@@ -6,9 +6,9 @@
 int motor1_velocidad=11;//  EnA
 int motor1_adelante=7;  //  In1
 int motor1_atras=8;     //  In2
-int motor2_adelante=9;  //  In3
+int motor2_adelante=12;  //  In3
 int motor2_atras=10;    //  In4
-int motor2_velocidad=12;//  EnB
+int motor2_velocidad=9;//  EnB
 
 int sensorIRSuelo=6;
 int sensorUSTrigger=5;
@@ -112,6 +112,17 @@ int mideDistancia()
 }
 
 void loop() {
+
+velocidad(220);
+
+while(1)
+{
+adelante();
+delay(5000);
+atras();
+delay(5000);
+}
+
   // put your main code here, to run repeatedly:
   if(haySuelo())
   {
