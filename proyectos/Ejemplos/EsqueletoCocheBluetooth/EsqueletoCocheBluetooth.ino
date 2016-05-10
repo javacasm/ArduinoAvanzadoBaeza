@@ -90,7 +90,13 @@ void loop() {
        if(dato=='m')
        {velocidad(VelocidadMedia);}
 
-       
+
+       if((dato>='0') && (dato<='9'))
+       {
+          // Usamos el formato de los codigos ASCII http://www.coolbasic.com/cbmanual/pics/ascii.gif
+          int v=(dato-'0')*255.0/9.0;
+          velocidad(v);
+       }
      }
   }
  
