@@ -1,5 +1,4 @@
-#include <Arduino.h>
-
+#include <IRLremote.h>
 
 // TODO: revisar los pines EN tiene PWM
 
@@ -111,17 +110,24 @@ int mideDistancia()
   return cm;
 }
 
+void test()
+{
+  velocidad(220);
+  while(1)
+  {
+  adelante();
+  delay(5000);
+  atras();
+  delay(5000);
+  }
+
+}
+
 void loop() {
 
-velocidad(220);
 
-while(1)
-{
-adelante();
-delay(5000);
-atras();
-delay(5000);
-}
+
+ test(); // Test sin fin
 
   // put your main code here, to run repeatedly:
   if(haySuelo())
