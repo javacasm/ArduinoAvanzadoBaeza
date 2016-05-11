@@ -1,20 +1,43 @@
-#include <IRLremote.h>
+#include <BitbloqUS.h>
 
-// TODO: revisar los pines EN tiene PWM
+// Definimos los  pines
 
-int motor1_velocidad=11;//  EnA
-int motor1_adelante=7;  //  In1
-int motor1_atras=8;     //  In2
-int motor2_adelante=12;  //  In3
-int motor2_atras=10;    //  In4
-int motor2_velocidad=9;//  EnB
+#define motor1_velocidad  11    //  EnA
+#define motor1_adelante    7    //  In1
+#define motor1_atras      8     //  In2
+#define motor2_adelante   12    //  In3
+#define motor2_atras      10    //  In4
+#define motor2_velocidad  9     //  EnB
 
-int sensorIRSuelo=6;
-int sensorUSTrigger=5;
-int sensorUSEcho=4;
+#define sensorIRSuelo     6
+#define sensorUSTrigger   4
+#define sensorUSEcho      5
 
-void adelante()
+#define DIR_FORWARD       1
+#define DIR_BACKWARD      0
+
+#define VEL_MAX           255
+#define VEL_MED           200
+
+void setup() {
+  // Fundamental!!! ACTIVAR LAS PATILLAS DE CONTROL DE LOS MOTORES COMO SALIDAS
+  pinMode(motor1_adelante,OUTPUT);
+  pinMode(motor1_atras,OUTPUT);
+  pinMode(motor2_adelante,OUTPUT);
+  pinMode(motor2_atras,OUTPUT);
+
+  // Sensores
+  pinMode(sensorIRSuelo,INPUT);
+  pinMode(sensorUSTrigger,OUTPUT);
+  pinMode(sensorUSEcho,INPUT);
+
+  Serial.begin(9600);
+}
+
+
+void atras()
 {
+  Serial.println("Atras");
   // motor 1 en dirección adelante
   digitalWrite(motor1_adelante,HIGH);
   digitalWrite(motor1_atras,LOW);
@@ -25,8 +48,9 @@ void adelante()
 }
 
 
-void atras()
+void adelante()
 {
+  Serial.println("Adelante");
   // motor 1 en dirección atras
   digitalWrite(motor1_adelante,LOW);
   digitalWrite(motor1_atras,HIGH);
@@ -38,6 +62,7 @@ void atras()
 
 void derecha()
 {
+  Serial.println("Derecha");
   // motor 1 en dirección atras
   digitalWrite(motor1_adelante,LOW);
   digitalWrite(motor1_atras,HIGH);
@@ -47,9 +72,22 @@ void derecha()
   digitalWrite(motor2_atras,LOW);
 }
 
+void izquierda()
+{
+  Serial.println("Izquierda");
+  // motor 2 en dirección atras
+  digitalWrite(motor2_adelante,LOW);
+  digitalWrite(motor2_atras,HIGH);
+
+  // motor 1 en dirección adelante
+  digitalWrite(motor1_adelante,HIGH);
+  digitalWrite(motor1_atras,LOW);
+}
+
 
 void parar()
 {
+  Serial.println("Parar");
   // motor 1 parado
   digitalWrite(motor1_adelante,LOW);
   digitalWrite(motor1_atras,LOW);
@@ -59,28 +97,18 @@ void parar()
   digitalWrite(motor2_atras,LOW);
 }
 
-int dv=0; // Los motores se mueven a la misma velocidad
+int dv=-20; // Los motores se mueven a la misma velocidad
 void velocidad(int v)
 {
+  Serial.print("Velocidad=");
+  Serial.println(v);
+
   // Si apreciamos que el robot avanza curvado podemos calibrarlos con
   // valores pequeños positivos o negativos de dv
   analogWrite(motor1_velocidad,v+dv);
   analogWrite(motor2_velocidad,v);
 }
 
-void setup() {
-  // Fundamental!!! ACTIVAR LAS PATILLAS DE CONTROL DE LOS MOTORES COMO SALIDAS
-  pinMode(motor1_adelante,OUTPUT);
-  pinMode(motor1_atras,OUTPUT);
-  pinMode(motor2_adelante,OUTPUT);
-  pinMode(motor2_atras,OUTPUT);
-
-  // Sensores
-  pinMode(sensorIRSuelo,INPUT);
-  pinMode(sensorUSTrigger,INPUT);
-  pinMode(sensorUSEcho,INPUT);
-
-}
 
 // Usa un sensor Infrarrojo para ver si hay o no suelo
 // Debe estar en la parte delantera del robot
@@ -92,10 +120,22 @@ int haySuelo()
   else
   {  resultado=0;}
 
-  return resultado;
+  //return resultado;
+  return true;
+}
+
+
+US ultrasonidos_0(4, 5);
+
+float mideDistancia()
+{
+  float Distancia = ultrasonidos_0.read();
+  Serial.println(Distancia);
+
+  return Distancia;
 }
 // Mide la distancia usando el sensor de Ultrasonidos HC-SR04 o similar
-int mideDistancia()
+long mideDistanciaRaw()
 {
   // Basado en http://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/
   // Mejor usar la librería newPing https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home
@@ -106,19 +146,20 @@ int mideDistancia()
   digitalWrite(sensorUSTrigger,LOW);   // paramos el ultrasonido
 
   long tiempoRebote=pulseIn(sensorUSEcho,HIGH);  // Medimos el tiempo hasta que se detecte el rebote
-  long cm=((tiempoRebote/2)*340)/1000000.0; // Dividimos por 2 (es ida y vuelta)
+  long cm=((tiempoRebote/2.0)*340.0)/1000000.0; // Dividimos por 2 (es ida y vuelta)
+  Serial.println(tiempoRebote);
   return cm;
 }
 
 void test()
 {
-  velocidad(220);
+  velocidad(VEL_MAX);
   while(1)
   {
   adelante();
-  delay(5000);
+  delay(3000);
   atras();
-  delay(5000);
+  delay(3000);
   }
 
 }
@@ -127,19 +168,29 @@ void loop() {
 
 
 
- test(); // Test sin fin
+ //test(); // Test sin fin
 
   // put your main code here, to run repeatedly:
   if(haySuelo())
   {
-      if(mideDistancia()<10)
+    float Distancia=mideDistancia();
+      if(Distancia>100)
       {
+        velocidad(VEL_MAX);
         adelante();
       }
       else
       {
-        derecha();
-        delay(300);
+        if(Distancia>15)
+        {
+          velocidad(VEL_MED);
+          adelante();
+        }
+        else
+        {
+          derecha();
+          delay(500);
+        }
       }
 
   }
