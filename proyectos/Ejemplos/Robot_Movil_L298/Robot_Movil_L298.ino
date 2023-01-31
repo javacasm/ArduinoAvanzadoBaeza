@@ -125,7 +125,7 @@ int haySuelo()
 }
 
 
-US ultrasonidos_0(4, 5);
+US ultrasonidos_0(sensorUSTrigger, sensorUSEcho);
 
 float mideDistancia()
 {
